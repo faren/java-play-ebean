@@ -4,23 +4,19 @@
 # --- !Ups
 
 create table person (
-  id                        bigint not null,
+  id                        bigint auto_increment not null,
   name                      varchar(255),
   constraint pk_person primary key (id))
 ;
-
-create sequence person_seq;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists person;
+drop table person;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists person_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
